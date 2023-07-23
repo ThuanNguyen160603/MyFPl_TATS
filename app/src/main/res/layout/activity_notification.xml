@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Notification">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,26 +21,21 @@
             android:textColor="@color/black"
             android:textSize="35dp"
             android:textStyle="bold" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/setting"
             android:padding="10dp"
-            android:layout_marginLeft="@android:dimen/notification_large_icon_height"
-            />
+            android:layout_marginLeft="@android:dimen/notification_large_icon_height" />
     </LinearLayout>
 
-    <ImageView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewNotifications"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:src="@drawable/img_notifications"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="40dp"
-        android:text="Chưa có thông báo"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:listitem="@layout/notification_item"
+        android:padding="10dp" />
 
 </LinearLayout>
