@@ -3,11 +3,14 @@ package com.example.androidnetworking;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,9 +24,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
 //        Spannable addContent2 = new SpannableString("MYFPL");
 //        addContent2.setSpan(new ForegroundColorSpan(Color.rgb(255,122,0)),0,addContent2.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 //        idContent.setText(addContent2);
 
+    }
+    public void Start (View view) {
+        Intent intent = new Intent(MainActivity.this, HomePage.class);
+        startActivity(intent);
     }
 }

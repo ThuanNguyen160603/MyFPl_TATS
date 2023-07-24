@@ -1,4 +1,4 @@
-package com.example.androidnetworking;
+package com.example.androidnetworking.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.androidnetworking.Book;
+import com.example.androidnetworking.R;
 
 import java.util.List;
 
