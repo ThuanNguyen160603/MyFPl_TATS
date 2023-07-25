@@ -1,4 +1,4 @@
-package com.example.androidnetworking;
+package com.example.androidnetworking.Model;
 
 public class Book {
     private int resourceId;

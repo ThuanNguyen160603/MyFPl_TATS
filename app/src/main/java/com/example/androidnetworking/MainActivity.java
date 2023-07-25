@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
 //        idContent.setText(addContent2);
 
     }
-    public void Start (View view) {
-        Intent intent = new Intent(MainActivity.this, HomePage.class);
+    public void StartLogin (View view) {
+        Intent intent = new Intent(MainActivity.this, Login.class);
         startActivity(intent);
     }
 }

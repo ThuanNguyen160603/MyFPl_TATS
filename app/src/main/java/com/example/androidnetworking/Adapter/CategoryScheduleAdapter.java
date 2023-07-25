@@ -10,59 +10,56 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidnetworking.Model.Category;
-import com.example.androidnetworking.Model.ScheduleModel;
+import com.example.androidnetworking.Model.CategorySchedule;
 import com.example.androidnetworking.R;
 
 import java.util.List;
 
-import kotlinx.coroutines.SchedulerTaskKt;
-
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>{
+public class CategoryScheduleAdapter extends RecyclerView.Adapter<CategoryScheduleAdapter.CategoryViewHolder>{
     private Context mContext;
-    private List<Category> mListCategory;
+    private List<CategorySchedule> mListCategorySchedule;
 
-    public CategoryAdapter (Context mContext){
+    public CategoryScheduleAdapter(Context mContext){
         this.mContext = mContext;
     }
 
-    public void setData(List<Category> list){
-        this.mListCategory = list;
+    public void setData(List<CategorySchedule> list){
+        this.mListCategorySchedule = list;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category1,parent,false);
         return new CategoryViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-        Category category = mListCategory.get(position);
-        if(category == null){
+        CategorySchedule categoryschedule = mListCategorySchedule.get(position);
+        if(categoryschedule == null){
             return;
         }
-        holder.tvNameCategory.setText(category.getNameCategory());
+        holder.tvNameCategory.setText(categoryschedule.getNameCategory());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, RecyclerView.HORIZONTAL, false);
         holder.rcvBook.setLayoutManager(linearLayoutManager);
 
-        BookAdapter bookAdapter = new BookAdapter();
-        bookAdapter.setData(category.getBooks());
-        holder.rcvBook.setAdapter(bookAdapter);
+//        BookAdapter bookAdapter = new BookAdapter();
+//        bookAdapter.setData(categoryschedule.getBooks());
+//        holder.rcvBook.setAdapter(bookAdapter);
 
-//        ScheduleAdapter scheduleAdapter = new ScheduleAdapter();
-//        scheduleAdapter.setData(category.getSchedules());
-//        holder.rcvBook.setAdapter(scheduleAdapter);
+        ScheduleAdapter scheduleAdapter = new ScheduleAdapter();
+        scheduleAdapter.setData(categoryschedule.getSchedules());
+        holder.rcvBook.setAdapter(scheduleAdapter);
 
     }
 
     @Override
     public int getItemCount() {
-        if(mListCategory != null){
-            return mListCategory.size();
+        if(mListCategorySchedule != null){
+            return mListCategorySchedule.size();
         }
         return 0;
     }
@@ -70,13 +67,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tvNameCategory;
-        private RecyclerView rcvBook, rcvBook1;
+        private RecyclerView rcvBook;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvNameCategory =  itemView.findViewById(R.id.tv_name_category);
-            rcvBook =  itemView.findViewById(R.id.rcv_book);
+            tvNameCategory =  itemView.findViewById(R.id.tv_name_category1);
+            rcvBook =  itemView.findViewById(R.id.rcv_book1);
 
 
         }

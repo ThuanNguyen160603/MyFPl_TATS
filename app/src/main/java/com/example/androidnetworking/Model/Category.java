@@ -1,4 +1,6 @@
-package com.example.androidnetworking;
+package com.example.androidnetworking.Model;
+
+import com.example.androidnetworking.Model.Book;
 
 import java.util.List;
 
@@ -6,10 +8,22 @@ public class Category {
     private String nameCategory;
     private List<Book> books;
 
+    private List<ScheduleModel> schedules;
+
     public Category(String nameCategory, List<Book> books) {
         this.nameCategory = nameCategory;
         this.books = books;
+
     }
+
+    public List<ScheduleModel> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(List<ScheduleModel> schedules) {
+        this.schedules = schedules;
+    }
+
 
     public String getNameCategory() {
         return nameCategory;

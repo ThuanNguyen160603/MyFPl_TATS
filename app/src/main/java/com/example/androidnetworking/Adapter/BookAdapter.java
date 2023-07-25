@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidnetworking.Book;
+import com.example.androidnetworking.Model.Book;
 import com.example.androidnetworking.R;
 
 import java.util.List;

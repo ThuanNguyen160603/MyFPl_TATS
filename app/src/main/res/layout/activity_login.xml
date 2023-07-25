@@ -128,5 +128,6 @@
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/FGPW"
         android:drawableEnd="@drawable/ic_send"
+        android:onClick="StartHome"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
