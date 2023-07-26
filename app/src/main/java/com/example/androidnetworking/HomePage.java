@@ -6,19 +6,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.androidnetworking.Adapter.CategoryAdapter;
 import com.example.androidnetworking.Adapter.CategoryScheduleAdapter;
+import com.example.androidnetworking.Fragment.HomeFragment;
+import com.example.androidnetworking.Fragment.NotificationFragment;
+import com.example.androidnetworking.Fragment.SettingFragment;
 import com.example.androidnetworking.Model.Book;
 import com.example.androidnetworking.Model.Category;
 import com.example.androidnetworking.Model.CategorySchedule;
 import com.example.androidnetworking.Model.ScheduleModel;
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage extends AppCompatActivity {
+    BottomNavigationView bottomNavigationView;
+
+    HomeFragment homeFragment = new HomeFragment();
+    SettingFragment settingsFragment = new SettingFragment();
+    NotificationFragment notificationFragment = new NotificationFragment();
     private RecyclerView rcvCategory, rcvCategory1;
     private CategoryAdapter categoryAdapter;
     private CategoryScheduleAdapter categoryscheduleAdapter;
@@ -28,6 +40,7 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
 
         //tin tuc
         rcvCategory = findViewById(R.id.rcv_category);
@@ -45,7 +58,7 @@ public class HomePage extends AppCompatActivity {
 
         //lich thi
         //thong bao
-
+        //
     }
     private List<Category> getListCategory(){
         List<Category> listCategory = new ArrayList<>();
@@ -81,8 +94,8 @@ public class HomePage extends AppCompatActivity {
         return listCategory;
     }
 
-    public void Notify (View view) {
-        Intent intent = new Intent(HomePage.this, Notification.class);
-        startActivity(intent);
-    }
+//    public void Notify (View view) {
+//        Intent intent = new Intent(HomePage.this, Notification.class);
+//        startActivity(intent);
+//    }
 }
