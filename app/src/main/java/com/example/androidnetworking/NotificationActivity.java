@@ -12,7 +12,7 @@ import com.example.androidnetworking.Model.NotificationModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Notification extends AppCompatActivity {
+public class NotificationActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private NotificationAdapter adapter;

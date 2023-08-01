@@ -73,6 +73,7 @@ public class HomePage extends AppCompatActivity {
 
         //add name category
         listCategory.add(new Category("Tin tức", listBook));
+        listCategory.add(new Category("Tin tức", listBook));
 
         return listCategory;
     }
@@ -89,6 +90,7 @@ public class HomePage extends AppCompatActivity {
         listSchedule.add(new ScheduleModel("Kỹ năng học tập 2", "Ca 5 (7h30-9h30)", "Phòng T1108", "2023-07-22", "MOB402"));
 
         //add name category
+        listCategory.add(new CategorySchedule("Lịch học", listSchedule));
         listCategory.add(new CategorySchedule("Lịch học", listSchedule));
 
         return listCategory;
