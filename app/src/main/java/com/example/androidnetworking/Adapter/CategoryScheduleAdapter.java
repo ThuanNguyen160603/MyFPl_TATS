@@ -72,11 +72,9 @@ public class CategoryScheduleAdapter extends RecyclerView.Adapter<CategorySchedu
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvNameCategory =  itemView.findViewById(R.id.tv_name_category1);
-            rcvBook =  itemView.findViewById(R.id.rcv_book1);
-
+            tvNameCategory = itemView.findViewById(R.id.tv_name_category1);
+            rcvBook = itemView.findViewById(R.id.rcv_book1);
 
         }
     }
-
 }

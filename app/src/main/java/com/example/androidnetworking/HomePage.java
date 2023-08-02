@@ -35,6 +35,10 @@ public class HomePage extends AppCompatActivity {
     private CategoryAdapter categoryAdapter;
     private CategoryScheduleAdapter categoryscheduleAdapter;
 
+    public void StartNotification(View view) {
+        Intent intent = new Intent(HomePage.this, NotificationActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +60,8 @@ public class HomePage extends AppCompatActivity {
         categoryscheduleAdapter.setData(getListCategory1());
         rcvCategory1.setAdapter(categoryscheduleAdapter);
 
-        //lich thi
-        //thong bao
-        //
+
+
     }
     private List<Category> getListCategory(){
         List<Category> listCategory = new ArrayList<>();
@@ -72,7 +75,6 @@ public class HomePage extends AppCompatActivity {
         listBook.add(new Book(R.drawable.tin5,"FPT Software Trở Thành Đối Tác Phần Mềm Toàn Diện Của Tập Đoàn Nippon Seiki"));
 
         //add name category
-        listCategory.add(new Category("Tin tức", listBook));
         listCategory.add(new Category("Tin tức", listBook));
 
         return listCategory;
@@ -91,13 +93,11 @@ public class HomePage extends AppCompatActivity {
 
         //add name category
         listCategory.add(new CategorySchedule("Lịch học", listSchedule));
-        listCategory.add(new CategorySchedule("Lịch học", listSchedule));
 
         return listCategory;
     }
 
-//    public void Notify (View view) {
-//        Intent intent = new Intent(HomePage.this, Notification.class);
-//        startActivity(intent);
-//    }
+    //lich thi
+
+
 }

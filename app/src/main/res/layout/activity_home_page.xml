@@ -51,6 +51,16 @@
                             android:layout_marginTop="15dp"
                             android:layout_marginEnd="10dp" />
 
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rcv_lichthi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/rcv_lich"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="10dp" />
+
                 </RelativeLayout>
 
                 <TextView
@@ -93,7 +103,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="25dp"
-                    android:src="@drawable/bell" />
+                    android:src="@drawable/bell"
+                    android:onClick="StartNotification"/>
 
                 <androidx.appcompat.widget.SearchView
                     android:layout_width="match_parent"
