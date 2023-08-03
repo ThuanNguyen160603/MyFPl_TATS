@@ -1,19 +1,24 @@
 package com.example.androidnetworking.Model;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import com.example.androidnetworking.HomePage;
+
 public class NotificationModel {
-    private int idNews;
+    private String idNews;
     private String title;
     private String content;
     private String date;
 
-    public NotificationModel(int idNews, String title, String content, String date) {
+    public NotificationModel(String idNews, String title, String content, String date) {
         this.idNews = idNews;
         this.title = title;
         this.content = content;
         this.date = date;
     }
 
-    public int getIdNews() {
+    public String getIdNews() {
         return idNews;
     }
 

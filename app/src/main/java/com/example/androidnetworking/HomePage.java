@@ -6,34 +6,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.androidnetworking.Adapter.CategoryAdapter;
 import com.example.androidnetworking.Adapter.CategoryScheduleAdapter;
-import com.example.androidnetworking.Fragment.HomeFragment;
-import com.example.androidnetworking.Fragment.NotificationFragment;
-import com.example.androidnetworking.Fragment.SettingFragment;
+import com.example.androidnetworking.Adapter.ExamScheduleAdapter;
+import com.example.androidnetworking.Adapter.ScheduleAdapter;
 import com.example.androidnetworking.Model.Book;
 import com.example.androidnetworking.Model.Category;
 import com.example.androidnetworking.Model.CategorySchedule;
+import com.example.androidnetworking.Model.ExamScheduleModel;
+import com.example.androidnetworking.Model.NotificationModel;
 import com.example.androidnetworking.Model.ScheduleModel;
-import com.google.android.material.badge.BadgeDrawable;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import com.example.androidnetworking.Services.APIServices;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomePage extends AppCompatActivity {
-    BottomNavigationView bottomNavigationView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-    HomeFragment homeFragment = new HomeFragment();
-    SettingFragment settingsFragment = new SettingFragment();
-    NotificationFragment notificationFragment = new NotificationFragment();
-    private RecyclerView rcvCategory, rcvCategory1;
+public class HomePage extends AppCompatActivity {
+    private RecyclerView rcvCategory, rvSchedule, rvExamSchedule;
     private CategoryAdapter categoryAdapter;
     private CategoryScheduleAdapter categoryscheduleAdapter;
+
+    private ScheduleAdapter scheduleAdapter;
+    private ExamScheduleAdapter examScheduleAdapter;
 
     public void StartNotification(View view) {
         Intent intent = new Intent(HomePage.this, NotificationActivity.class);
@@ -45,59 +48,68 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-
-        //tin tuc
-        rcvCategory = findViewById(R.id.rcv_category);
-        rcvCategory.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        categoryAdapter = new CategoryAdapter(this);
-        categoryAdapter.setData(getListCategory());
-        rcvCategory.setAdapter(categoryAdapter);
-
-        //lich hoc
-        rcvCategory1 = findViewById(R.id.rcv_lich);
-        rcvCategory1.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        categoryscheduleAdapter = new CategoryScheduleAdapter(this);
-        categoryscheduleAdapter.setData(getListCategory1());
-        rcvCategory1.setAdapter(categoryscheduleAdapter);
+        // Tin Tức
 
 
+        // Lịch học
+        rvSchedule = findViewById(R.id.rvSchedule);
+        getAndSetScheduleData();
 
-    }
-    private List<Category> getListCategory(){
-        List<Category> listCategory = new ArrayList<>();
-        List<Book> listBook = new ArrayList<>();
-
-        //add du lieu itemtin tuc
-        listBook.add(new Book(R.drawable.tin1,"FPT Đồng Hành Cùng VNOI CUP 2023 – Vườn Ươm Tài Năng Công Nghệ Trẻ"));
-        listBook.add(new Book(R.drawable.tin2,"FPT Software Khai Trương Văn Phòng Mới Tại Huế"));
-        listBook.add(new Book(R.drawable.tin3,"FezyFlow - Nền Tảng Giúp Doanh Nghiệp Cải Thiện 45% Năng Suất Làm Việc"));
-        listBook.add(new Book(R.drawable.tin4,"FPT Software Hợp Tác Với Viện Kỹ Thuật ĐH Bách Khoa Trong Lĩnh Vực Xe Điện"));
-        listBook.add(new Book(R.drawable.tin5,"FPT Software Trở Thành Đối Tác Phần Mềm Toàn Diện Của Tập Đoàn Nippon Seiki"));
-
-        //add name category
-        listCategory.add(new Category("Tin tức", listBook));
-
-        return listCategory;
+        // Lịch thi
+        rvExamSchedule = findViewById(R.id.rvExamSchedule);
+        getAndSetExamScheduleData();
     }
 
-    private List<CategorySchedule> getListCategory1() {
-        List<CategorySchedule> listCategory = new ArrayList<>();
-        List<ScheduleModel> listSchedule = new ArrayList<>();
+    private void getAndSetExamScheduleData() {
+        // Kết nối api
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIServices.baseLink)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        APIServices apiServices = retrofit.create(APIServices.class);
 
-        //add du kieu lich hoc
-        listSchedule.add(new ScheduleModel("Android Networking", "Ca 2 (7h30-9h30)", "Phòng T1008", "2023-07-24", "MOB402"));
-        listSchedule.add(new ScheduleModel("Lập trình Server", "Ca 6 (7h30-9h30)", "Phòng T1001", "2023-07-25", "MOB402"));
-        listSchedule.add(new ScheduleModel("Dự Án 1", "Ca 4 (7h30-9h30)", "Phòng T305", "2023-07-26", "MOB402"));
-        listSchedule.add(new ScheduleModel("Khởi sự doanh nghiệp", "Ca 3 (7h30-9h30)", "Phòng T808", "2023-07-23", "MOB402"));
-        listSchedule.add(new ScheduleModel("Kỹ năng học tập 2", "Ca 5 (7h30-9h30)", "Phòng T1108", "2023-07-22", "MOB402"));
+        // Dữ liệu lấy từ api
+        Call<ArrayList<ExamScheduleModel>> response = apiServices.getExamSchedule();
+        response.enqueue(new Callback<ArrayList<ExamScheduleModel>>() {
+            @Override
+            public void onResponse(Call<ArrayList<ExamScheduleModel>> call, Response<ArrayList<ExamScheduleModel>> response) {
+                ArrayList<ExamScheduleModel> list = response.body();
+                rvExamSchedule.setLayoutManager(new LinearLayoutManager(HomePage.this, RecyclerView.VERTICAL, false));
+                examScheduleAdapter = new ExamScheduleAdapter(list);
+                rvExamSchedule.setAdapter(examScheduleAdapter);
+            }
 
-        //add name category
-        listCategory.add(new CategorySchedule("Lịch học", listSchedule));
-
-        return listCategory;
+            @Override
+            public void onFailure(Call<ArrayList<ExamScheduleModel>> call, Throwable t) {
+                Toast.makeText(HomePage.this, "Lấy dữ liệu lịch thi thất bại", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    //lich thi
+    private void getAndSetScheduleData() {
+        // Kết nối api
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(APIServices.baseLink)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        APIServices apiServices = retrofit.create(APIServices.class);
 
+        // Dữ liệu lấy từ api
+        Call<ArrayList<ScheduleModel>> response = apiServices.getSchedule();
+        response.enqueue(new Callback<ArrayList<ScheduleModel>>() {
+            @Override
+            public void onResponse(Call<ArrayList<ScheduleModel>> call, Response<ArrayList<ScheduleModel>> response) {
+                ArrayList<ScheduleModel> list = response.body();
+                rvSchedule.setLayoutManager(new LinearLayoutManager(HomePage.this, RecyclerView.VERTICAL, false));
+                scheduleAdapter = new ScheduleAdapter(list);
+                rvSchedule.setAdapter(scheduleAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<ScheduleModel>> call, Throwable t) {
+                Toast.makeText(HomePage.this, "Lấy dữ liệu lịch học thất bại", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }

@@ -1,56 +1,57 @@
 package com.example.androidnetworking.Model;
 
 public class ScheduleModel {
-    private String titile1, titile2, titile3, titile4, titile5;
+    private String idLH;
+    private String idMon;
+    private int ca;
+    private String diaDiem;
+    private String ngayHoc;
 
-    public ScheduleModel( String titile1, String titile2, String titile3, String titile4, String titile5) {
-        this.titile1 = titile1;
-        this.titile2 = titile2;
-        this.titile3 = titile3;
-        this.titile4 = titile4;
-        this.titile5 = titile5;
+    public ScheduleModel(String idLH, String idMon, int ca, String diaDiem, String ngayHoc) {
+        this.idLH = idLH;
+        this.idMon = idMon;
+        this.ca = ca;
+        this.diaDiem = diaDiem;
+        this.ngayHoc = ngayHoc;
     }
 
-    public ScheduleModel() {
+    public String getIdLH() {
+        return idLH;
     }
 
-    public String getTitile5() {
-        return titile5;
+    public void setIdLH(String idLH) {
+        this.idLH = idLH;
     }
 
-    public void setTitile5(String titile5) {
-        this.titile5 = titile5;
+    public String getIdMon() {
+        return idMon;
     }
 
-    public String getTitile1() {
-        return titile1;
+    public void setIdMon(String idMon) {
+        this.idMon = idMon;
     }
 
-    public void setTitile1(String titile1) {
-        this.titile1 = titile1;
+    public int getCa() {
+        return ca;
     }
 
-    public String getTitile2() {
-        return titile2;
+    public void setCa(int ca) {
+        this.ca = ca;
     }
 
-    public void setTitile2(String titile2) {
-        this.titile2 = titile2;
+    public String getDiaDiem() {
+        return diaDiem;
     }
 
-    public String getTitile3() {
-        return titile3;
+    public void setDiaDiem(String diaDiem) {
+        this.diaDiem = diaDiem;
     }
 
-    public void setTitile3(String titile3) {
-        this.titile3 = titile3;
+    public String getNgayHoc() {
+        return ngayHoc;
     }
 
-    public String getTitile4() {
-        return titile4;
-    }
-
-    public void setTitile4(String titile4) {
-        this.titile4 = titile4;
+    public void setNgayHoc(String date) {
+        this.ngayHoc = date;
     }
 }

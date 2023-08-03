@@ -52,11 +52,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         BookAdapter bookAdapter = new BookAdapter();
         bookAdapter.setData(category.getBooks());
         holder.rcvBook.setAdapter(bookAdapter);
-
-//        ScheduleAdapter scheduleAdapter = new ScheduleAdapter();
-//        scheduleAdapter.setData(category.getSchedules());
-//        holder.rcvBook.setAdapter(scheduleAdapter);
-
     }
 
     @Override
@@ -77,8 +72,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
             tvNameCategory =  itemView.findViewById(R.id.tv_name_category);
             rcvBook =  itemView.findViewById(R.id.rcv_book);
-
-
         }
     }
 

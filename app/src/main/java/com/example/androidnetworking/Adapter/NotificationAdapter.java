@@ -32,6 +32,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @Override
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
         NotificationModel notification = notificationList.get(position);
+        holder.tvNewsID.setText(notification.getIdNews());
         holder.tvTitle.setText(notification.getTitle());
         holder.tvContent.setText(notification.getContent());
         holder.tvDate.setText(notification.getDate());
@@ -51,10 +52,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     // đây là hàm sẽ kết nối adapter với giao diện
     public class NotificationViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvContent, tvDate;
+        TextView tvTitle, tvContent, tvDate, tvNewsID;
         View divider;
         public NotificationViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvNewsID = itemView.findViewById(R.id.tvNewsID);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvContent = itemView.findViewById(R.id.tvContent);
             tvDate = itemView.findViewById(R.id.tvDate);

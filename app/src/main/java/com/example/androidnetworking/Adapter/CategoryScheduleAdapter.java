@@ -50,9 +50,6 @@ public class CategoryScheduleAdapter extends RecyclerView.Adapter<CategorySchedu
 //        bookAdapter.setData(categoryschedule.getBooks());
 //        holder.rcvBook.setAdapter(bookAdapter);
 
-        ScheduleAdapter scheduleAdapter = new ScheduleAdapter();
-        scheduleAdapter.setData(categoryschedule.getSchedules());
-        holder.rcvBook.setAdapter(scheduleAdapter);
 
     }
 
