@@ -9,15 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.androidnetworking.Adapter.CategoryAdapter;
-import com.example.androidnetworking.Adapter.CategoryScheduleAdapter;
 import com.example.androidnetworking.Adapter.ExamScheduleAdapter;
 import com.example.androidnetworking.Adapter.ScheduleAdapter;
-import com.example.androidnetworking.Model.Book;
-import com.example.androidnetworking.Model.Category;
-import com.example.androidnetworking.Model.CategorySchedule;
 import com.example.androidnetworking.Model.ExamScheduleModel;
-import com.example.androidnetworking.Model.NotificationModel;
 import com.example.androidnetworking.Model.ScheduleModel;
 import com.example.androidnetworking.Services.APIServices;
 
@@ -32,8 +26,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomePage extends AppCompatActivity {
     private RecyclerView rcvCategory, rvSchedule, rvExamSchedule;
-    private CategoryAdapter categoryAdapter;
-    private CategoryScheduleAdapter categoryscheduleAdapter;
 
     private ScheduleAdapter scheduleAdapter;
     private ExamScheduleAdapter examScheduleAdapter;
