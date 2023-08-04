@@ -16,7 +16,6 @@ import com.example.androidnetworking.Model.ScheduleModel;
 import com.example.androidnetworking.Services.APIServices;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,6 +51,16 @@ public class HomePage extends AppCompatActivity {
         getAndSetExamScheduleData();
     }
 
+    public void goToMoreExamSchedule(View view) {
+        Intent moreExamSchedule = new Intent(HomePage.this, MoreExamSchedule.class);
+        startActivity(moreExamSchedule);
+    }
+
+    public void goToMoreSchedule(View view) {
+        Intent moreSchedule = new Intent(HomePage.this, MoreSchedule.class);
+        startActivity(moreSchedule);
+    }
+
     private void getAndSetExamScheduleData() {
         // Kết nối api
         Retrofit retrofit = new Retrofit.Builder()
@@ -66,7 +75,7 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<ExamScheduleModel>> call, Response<ArrayList<ExamScheduleModel>> response) {
                 ArrayList<ExamScheduleModel> list = response.body();
-                rvExamSchedule.setLayoutManager(new LinearLayoutManager(HomePage.this, RecyclerView.VERTICAL, false));
+                rvExamSchedule.setLayoutManager(new LinearLayoutManager(HomePage.this, RecyclerView.HORIZONTAL, false));
                 examScheduleAdapter = new ExamScheduleAdapter(list);
                 rvExamSchedule.setAdapter(examScheduleAdapter);
             }
@@ -92,7 +101,7 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<ScheduleModel>> call, Response<ArrayList<ScheduleModel>> response) {
                 ArrayList<ScheduleModel> list = response.body();
-                rvSchedule.setLayoutManager(new LinearLayoutManager(HomePage.this, RecyclerView.VERTICAL, false));
+                rvSchedule.setLayoutManager(new LinearLayoutManager(HomePage.this, RecyclerView.HORIZONTAL, false));
                 scheduleAdapter = new ScheduleAdapter(list);
                 rvSchedule.setAdapter(scheduleAdapter);
             }

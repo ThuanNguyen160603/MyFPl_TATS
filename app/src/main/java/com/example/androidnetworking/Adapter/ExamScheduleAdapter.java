@@ -19,6 +19,7 @@ public class ExamScheduleAdapter extends RecyclerView.Adapter<ExamScheduleAdapte
 
     public ExamScheduleAdapter(List<ExamScheduleModel> examScheduleList) {
         this.examScheduleList = examScheduleList;
+        notifyDataSetChanged();
     }
 
     @NonNull
