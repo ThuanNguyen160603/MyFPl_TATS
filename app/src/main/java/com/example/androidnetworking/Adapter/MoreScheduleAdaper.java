@@ -8,16 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidnetworking.Model.NotificationModel;
 import com.example.androidnetworking.Model.ScheduleModel;
 import com.example.androidnetworking.R;
 
 import java.util.List;
 
-public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>{
+public class MoreScheduleAdaper extends RecyclerView.Adapter<MoreScheduleAdaper.ScheduleViewHolder>{
     private List<ScheduleModel> scheduleList;
 
-    public ScheduleAdapter(List<ScheduleModel> scheduleList) {
+    public MoreScheduleAdaper(List<ScheduleModel> scheduleList) {
         this.scheduleList = scheduleList;
         notifyDataSetChanged();
     }
@@ -25,7 +24,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     @NonNull
     @Override
     public ScheduleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_schedule, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_more_item, parent, false);
         return new ScheduleViewHolder(view);
     }
 

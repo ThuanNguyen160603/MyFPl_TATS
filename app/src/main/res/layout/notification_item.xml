@@ -38,6 +38,17 @@
         android:gravity="end"
         android:layout_marginTop="8dp" />
 
+    <!-- News ID (TextView) -->
+    <TextView
+        android:id="@+id/tvNewsID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="ID"
+        android:textColor="@color/black"
+        android:gravity="end"
+        android:layout_marginTop="8dp" />
+
     <!-- Divider (View) -->
     <View
         android:id="@+id/divider"

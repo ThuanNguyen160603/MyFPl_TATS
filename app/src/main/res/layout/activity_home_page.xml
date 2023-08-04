@@ -22,14 +22,13 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/terrain1" />
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/ln1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/contentText"
                     android:layout_marginTop="0dp"
                     android:orientation="vertical">
-
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rcv_category"
@@ -40,9 +39,29 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="10dp" />
-
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="LỊCH HỌC"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:textColor="#FF8C1F"                                    />
+                                <TextView
+                                    android:onClick="goToMoreSchedule"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="THÊM >>"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:textColor="#FF8C1F"
+                                    android:textAlignment="textEnd"/>
+                        </LinearLayout>
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rcv_lich"
+                            android:id="@+id/rvSchedule"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/rcv_category"
@@ -50,18 +69,37 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="15dp"
                             android:layout_marginEnd="10dp" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rcv_lichthi"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/rcv_lich"
+                            android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="LỊCH THI"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:textColor="#FF8C1F"                                    />
+                                <TextView
+                                    android:onClick="goToMoreExamSchedule"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="THÊM >>"
+                                    android:textStyle="bold"
+                                    android:textSize="15dp"
+                                    android:textColor="#FF8C1F"
+                                    android:textAlignment="textEnd"/>
+                        </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvExamSchedule"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/rvSchedule"
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="15dp"
                             android:layout_marginEnd="10dp" />
-
-                </RelativeLayout>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/contentText"

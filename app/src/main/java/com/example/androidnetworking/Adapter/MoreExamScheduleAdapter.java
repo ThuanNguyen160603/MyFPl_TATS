@@ -8,53 +8,51 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidnetworking.Model.NotificationModel;
-import com.example.androidnetworking.Model.ScheduleModel;
+import com.example.androidnetworking.Model.ExamScheduleModel;
 import com.example.androidnetworking.R;
 
 import java.util.List;
 
-public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>{
-    private List<ScheduleModel> scheduleList;
+public class MoreExamScheduleAdapter extends RecyclerView.Adapter<MoreExamScheduleAdapter.ScheduleViewHolder>{
+    private List<ExamScheduleModel> examScheduleList;
 
-    public ScheduleAdapter(List<ScheduleModel> scheduleList) {
-        this.scheduleList = scheduleList;
+    public MoreExamScheduleAdapter(List<ExamScheduleModel> examScheduleList) {
+        this.examScheduleList = examScheduleList;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public ScheduleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_schedule, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_more_item, parent, false);
         return new ScheduleViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleViewHolder holder, int position) {
-       ScheduleModel schedule = scheduleList.get(position);
-       if(schedule == null){
+       ExamScheduleModel examSchedule = examScheduleList.get(position);
+       if(examSchedule == null){
            return;
        }
-        holder.tvMonID.setText("ID mã môn: " + schedule.getIdMon());
-        holder.tvDate.setText("Ngày học: " + schedule.getNgayHoc());
-        holder.tvDiaDiem.setText("Địa điểm: " + schedule.getDiaDiem());
-        holder.tvCa.setText(String.valueOf("Ca: " + schedule.getCa()));
+        holder.tvMaMonID.setText("ID mã Môn: " + examSchedule.getMaMon());
+        holder.tvDate.setText("Ngày thi: " + examSchedule.getNgayThi());
+        holder.tvDiaDiem.setText("Địa điểm: " + examSchedule.getDiaDiem());
+        holder.tvCa.setText("Ca: " + String.valueOf(examSchedule.getCa()));
     }
-
 
     @Override
     public int getItemCount() {
-        if(scheduleList != null){
-            return scheduleList.size();
+        if(examScheduleList != null){
+            return examScheduleList.size();
         }
         return 0;
     }
 
     public class ScheduleViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvMonID, tvDate, tvDiaDiem, tvCa;
+        private TextView tvLTID, tvMaMonID, tvDate, tvDiaDiem, tvCa;
         public ScheduleViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvMonID = itemView.findViewById(R.id.tvMonID);
+            tvMaMonID = itemView.findViewById(R.id.tvMonID);
             tvDate = itemView.findViewById(R.id.tvDate);
             tvDiaDiem = itemView.findViewById(R.id.tvDiaDiem);
             tvCa = itemView.findViewById(R.id.tvCa);
