@@ -12,7 +12,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface APIServices {
-    String baseLink = "http://192.168.2.51/androidnetworkingapi/api/"; //ip thay đổi theo địa chỉ internet đang dùng
+    String baseLink = "http://192.168.187.173/androidnetworkingapi/api/"; //ip thay đổi theo địa chỉ internet đang dùng
     //api lấy tin tin tức/thông báo
     @GET("news.php")
     Call<ArrayList<NotificationModel>> getNews();

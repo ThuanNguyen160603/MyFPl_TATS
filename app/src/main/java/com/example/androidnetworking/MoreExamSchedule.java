@@ -50,7 +50,7 @@ public class MoreExamSchedule extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<ExamScheduleModel>> call, Response<ArrayList<ExamScheduleModel>> response) {
                 ArrayList<ExamScheduleModel> list = response.body();
-                rvMoreExamSchedule.setLayoutManager(new LinearLayoutManager(MoreExamSchedule.this, RecyclerView.HORIZONTAL, false));
+                rvMoreExamSchedule.setLayoutManager(new LinearLayoutManager(MoreExamSchedule.this, RecyclerView.VERTICAL, false));
                 moreExamScheduleAdapter = new MoreExamScheduleAdapter(list);
                 rvMoreExamSchedule.setAdapter(moreExamScheduleAdapter);
             }
